@@ -1,5 +1,7 @@
 package testCase;
 import base.baseTest;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import org.testng.annotations.Test;
 import pageEvents.HomePageEvents;
 import pageEvents.LoginPateEvents;

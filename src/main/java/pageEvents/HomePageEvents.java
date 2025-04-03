@@ -1,14 +1,17 @@
 package pageEvents;
 
 import base.baseTest;
+import com.aventstack.extentreports.ExtentTest;
 import pageObjects.HomePageElements;
 import pageObjects.LoginPageElements;
 import utils.ElementFetch;
+import utils.Reporter;
 
 import static base.baseTest.driver;
 
 public class HomePageEvents {
     ElementFetch ele= new ElementFetch();
+    Reporter reporterObject= new Reporter();
     public void login() throws InterruptedException {
         baseTest.logger.info("Clicking the login button");
         ele.getWebElement("xpath", HomePageElements.loginButton).click();
@@ -20,16 +23,19 @@ public class HomePageEvents {
             if (!mainWindow.equals(windowHandle)) {
                 driver.switchTo().window(windowHandle);
                 System.out.println("Switched to new window: " + windowHandle);
-                baseTest.logger.pass("Switched to new window: " + windowHandle);
+//                baseTest.logger.pass("Switched to new window: " + windowHandle);
+                reporterObject.reportStep("Switched to new window: " + windowHandle, "PASS");
                 break;
             }
         }
         if (ele.getWebElement("xpath", LoginPageElements.emailField).isDisplayed()) {
-            baseTest.logger.pass("Email field is displayed");
+            reporterObject.reportStep("Email field is displayed", "PASS");
+//            baseTest.logger.pass("Email field is displayed");
             System.out.println("Email field is displayed");
         } else {
-            baseTest.logger.fail("Email field is not displayed");
+//            baseTest.logger.fail("Email field is not displayed");
             System.out.println("Email field is not displayed");
+            reporterObject.reportStep("Email field is not displayed", "FAIL");
         }
     }
 }
