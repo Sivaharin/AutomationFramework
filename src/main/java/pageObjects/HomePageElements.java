@@ -1,5 +1,9 @@
 package pageObjects;
 
+import org.openqa.selenium.WebElement;
+import utils.ElementFetch;
+
 public interface HomePageElements {
-    String loginButton = "//a[contains(text(),'Login')]";
+    ElementFetch ele= new ElementFetch();
+    WebElement loginButton = ele.getWebElement("xpath","//a[contains(text(),'Login')]");
 }

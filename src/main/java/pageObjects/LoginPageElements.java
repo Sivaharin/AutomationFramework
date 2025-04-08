@@ -1,7 +1,11 @@
 package pageObjects;
 
+import org.openqa.selenium.WebElement;
+import utils.ElementFetch;
+
 public interface LoginPageElements {
-    String emailField = "//input[@name='email']";
+    ElementFetch ele= new ElementFetch();
+    WebElement emailField= ele.getWebElement("xpath", "//input[@name='email']");
     String passwordField = "//input[@name='password']";
     String loginButton = "//div[contains(text(),'Login')]";
     String loginErrorMessage = "//div[contains(text(),'Invalid email or password')]";

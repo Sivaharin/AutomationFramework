@@ -2,9 +2,11 @@ package pageEvents;
 
 import base.baseTest;
 import com.aventstack.extentreports.ExtentTest;
+import org.openqa.selenium.WebElement;
 import pageObjects.HomePageElements;
 import pageObjects.LoginPageElements;
 import utils.ElementFetch;
+import utils.ElementFetch.*;
 import utils.Reporter;
 
 import static base.baseTest.driver;
@@ -14,7 +16,9 @@ public class HomePageEvents {
     Reporter reporterObject= new Reporter();
     public void login() throws InterruptedException {
         baseTest.logger.info("Clicking the login button");
-        ele.getWebElement("xpath", HomePageElements.loginButton).click();
+        if(ele.checkElementPresenceWithoutReport(HomePageElements.loginButton)){
+            HomePageElements.loginButton.click();
+        }
         Thread.sleep(5000);
         String mainWindow=driver.getWindowHandle();
         baseTest.logger.info("Main window handle is: " + mainWindow);
@@ -28,7 +32,7 @@ public class HomePageEvents {
                 break;
             }
         }
-        if (ele.getWebElement("xpath", LoginPageElements.emailField).isDisplayed()) {
+        if (ele.checkElementPresenceWithReport("Email",LoginPageElements.emailField)) {
             reporterObject.reportStep("Email field is displayed", "PASS");
 //            baseTest.logger.pass("Email field is displayed");
             System.out.println("Email field is displayed");
