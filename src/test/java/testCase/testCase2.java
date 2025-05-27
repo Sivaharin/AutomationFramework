@@ -5,7 +5,7 @@ import pageEvents.HomePageEvents;
 import pageEvents.LoginPateEvents;
 import utils.ElementFetch;
 
-public class testCase1 extends baseTest {
+public class testCase2 extends baseTest {
     ElementFetch ele= new ElementFetch();
     HomePageEvents homePageEvents= new HomePageEvents();
     LoginPateEvents loginPateEvents= new LoginPateEvents();
